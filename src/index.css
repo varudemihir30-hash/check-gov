@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
+
+:root {
+  --oxford-blue: #002147;
+  --warm-ivory: #F8F6F0;
+  --white: #FFFFFF;
+  --imperial-gold: #C9982A;
+  --body-text: #1A1A2E;
+  
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-hindi: 'Tiro Devanagari Hindi', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--body-text);
+  background-color: var(--warm-ivory);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--oxford-blue);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hindi-text {
+  font-family: var(--font-hindi);
+}
+
+.bg-oxford {
+  background-color: var(--oxford-blue);
+  color: var(--white);
+}
+.bg-oxford h1, .bg-oxford h2, .bg-oxford h3, .bg-oxford h4, .bg-oxford h5, .bg-oxford h6 {
+  color: var(--white);
+}
+
+.bg-ivory { background-color: var(--warm-ivory); }
+.bg-white { background-color: var(--white); }
+
+.premium-card {
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.03);
+  border-top: 4px solid var(--imperial-gold);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1.5rem;
+}
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08), 0 20px 25px rgba(0, 0, 0, 0.05);
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  text-decoration: none;
+  border: none;
+  text-align: center;
+}
+.btn-gold {
+  background-color: var(--imperial-gold);
+  color: var(--oxford-blue);
+  font-weight: 700;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(201, 152, 42, 0.6);
+}
+.btn-ghost {
+  background-color: transparent;
+  color: var(--imperial-gold);
+  border: 1px solid var(--imperial-gold);
+}
+.btn-ghost:hover {
+  background-color: rgba(201, 152, 42, 0.1);
+  transform: translateY(-2px);
+}
+
+.text-gold { color: var(--imperial-gold); }
+.text-oxford { color: var(--oxford-blue); }
+.text-white { color: var(--white); }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.section-padding { padding: 5rem 0; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
+.gap-8 { gap: 2rem; }
+.gap-12 { gap: 3rem; }
+.grid { display: grid; }
+.text-center { text-align: center; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.w-full { width: 100%; box-sizing: border-box; }
+.h-full { height: 100%; }
+.hidden { display: none !important; }
+.block { display: block !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
+
+/* Tricolor Stripe */
+.tricolor-stripe {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(to right, #FF9933 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #138808 66.66%);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
