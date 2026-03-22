@@ -6,7 +6,6 @@ import Hero from './components/Hero';
 import UploadVerify from './components/UploadVerify';
 import VerificationResult from './components/VerificationResult';
 import HowItWorks from './components/HowItWorks';
-import FraudAwareness from './components/FraudAwareness';
 import Footer from './components/Footer';
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
         <UploadVerify />
         <VerificationResult />
         <HowItWorks />
-        <FraudAwareness />
         <Footer />
       </div>
     </LanguageProvider>

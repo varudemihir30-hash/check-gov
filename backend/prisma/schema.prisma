@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SchemeSector {
+  AGRICULTURE
+  ANIMAL_HUSBANDRY
+  BANKING_FINANCE
+  BUSINESS_ENTREPRENEURSHIP
+  EDUCATION_LEARNING
+  ENERGY_POWER
+  ENVIRONMENT_CLIMATE
+  HEALTH_WELLNESS
+  HOUSING_SHELTER
+  INFRASTRUCTURE
+  INSURANCE
+  JOBS_EMPLOYMENT
+  LEGAL_JUSTICE
+  MEDIA_INFORMATION
+  SCIENCE_TECHNOLOGY
+  SKILLS_TRAINING
+  SOCIAL_WELFARE
+  SPORTS_CULTURE
+  TOURISM_HOSPITALITY
+  TRANSPORT_MOBILITY
+  URBAN_DEVELOPMENT
+  WATER_SANITATION
+  WOMEN_CHILD
+  YOUTH_AFFAIRS
+  DEFENCE
+}
+
+enum SchemeType {
+  CENTRAL
+  STATE
+  CENTRAL_SPONSORED
+}
+
+enum InputType {
+  DOCUMENT
+  URL
+  SMS
+  QR
+}
+
+enum VerificationResult {
+  VERIFIED
+  FRAUD
+  UNVERIFIED
+}
+
+enum FraudReportStatus {
+  PENDING
+  REVIEWED
+  CONFIRMED
+}
+
+model Scheme {
+  id                  String        @id @default(uuid())
+  name                String
+  nameHindi           String        @default("") @map("name_hindi")
+  slug                String        @unique
+  description         String        @default("")
+  descriptionHindi    String        @default("") @map("description_hindi")
+  ministry            String
+  sector              SchemeSector
+  type                SchemeType
+  state               String?
+  eligibility         Json          @default("[]")
+  benefits            Json          @default("[]")
+  documentsRequired   Json          @default("[]") @map("documents_required")
+  applicationProcess  String        @default("") @map("application_process")
+  officialUrl         String        @default("") @map("official_url")
+  isActive            Boolean       @default(true) @map("is_active")
+  launchYear          Int?          @map("launch_year")
+  lastVerifiedAt      DateTime?     @map("last_verified_at")
+  createdAt           DateTime      @default(now()) @map("created_at")
+  updatedAt           DateTime      @updatedAt @map("updated_at")
+  verifications       Verification[]
+
+  @@map("schemes")
+}
+
+model Verification {
+  id                String             @id @default(uuid())
+  verificationId    String             @unique @map("verification_id")
+  userName          String?            @map("user_name")
+  userMobileHash    String?            @map("user_mobile_hash")
+  schemeId          String?            @map("scheme_id")
+  scheme            Scheme?            @relation(fields: [schemeId], references: [id])
+  inputType         InputType          @map("input_type")
+  inputContent      String             @map("input_content")
+  uploadedFiles     Json               @default("[]") @map("uploaded_files")
+  result            VerificationResult
+  confidenceScore   Float              @map("confidence_score")
+  fraudIndicators   Json?              @map("fraud_indicators")
+  aiAnalysis        String             @default("") @map("ai_analysis")
+  source            String             @default("")
+  state             String             @default("all")
+  createdAt         DateTime           @default(now()) @map("created_at")
+  fraudReports      FraudReport[]
+
+  @@map("verifications")
+}
+
+model FraudReport {
+  id                 String            @id @default(uuid())
+  verificationId     String            @map("verification_id")
+  verification       Verification      @relation(fields: [verificationId], references: [id])
+  reportedByMobile   String?           @map("reported_by_mobile")
+  description        String
+  status             FraudReportStatus @default(PENDING)
+  createdAt          DateTime          @default(now()) @map("created_at")
+
+  @@map("fraud_reports")
+}

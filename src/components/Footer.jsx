@@ -1,49 +1,28 @@
 import React from 'react';
 import { ShieldCheck } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer style={{ background: '#00152D', color: 'var(--white)', paddingTop: '4rem', paddingBottom: '2rem' }}>
       <div className="container">
         
-        <div className="grid grid-cols-1 md-grid-cols-4 gap-8 mb-12" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '3rem' }}>
-          <div className="flex flex-col gap-4">
+        <div className="flex flex-col items-center justify-center mb-12 text-center" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '3rem' }}>
+          <div className="flex flex-col items-center justify-center gap-4" style={{ maxWidth: '600px', margin: '0 auto' }}>
             <div className="flex items-center gap-3">
               <ShieldCheck size={32} className="text-gold" />
               <div>
                 <span className="text-white" style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 700, lineHeight: 1 }}>
-                  SachYojana
+                  {t('navTitle')}
                 </span>
               </div>
             </div>
-            <p className="hindi-text text-gold" style={{ fontSize: '1.2rem' }}>सत्य की रक्षा करें</p>
-            <p style={{ opacity: 0.7, fontSize: '0.9rem', lineHeight: 1.6 }}>
-              India's premium portal for verifying government schemes, preventing fraud, and ensuring public benefit transparency.
+            <p className="hindi-text text-gold m-0" style={{ fontSize: '1.2rem' }}>सत्य की रक्षा करें</p>
+            <p className="m-0" style={{ opacity: 0.7, fontSize: '0.9rem', lineHeight: 1.6 }}>
+              {t('footerDesc')}
             </p>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <h4 className="text-gold font-bold uppercase tracking-wider mb-2" style={{ fontSize: '0.9rem' }}>Quick Links</h4>
-            <a href="#" className="footer-link">Verify Scheme</a>
-            <a href="#" className="footer-link">Scheme Directory</a>
-            <a href="#" className="footer-link">Fraud Guidelines</a>
-            <a href="#" className="footer-link">Report Issue</a>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <h4 className="text-gold font-bold uppercase tracking-wider mb-2" style={{ fontSize: '0.9rem' }}>Government</h4>
-            <a href="#" className="footer-link">India.gov.in</a>
-            <a href="#" className="footer-link">MyGov</a>
-            <a href="#" className="footer-link">Digital India</a>
-            <a href="#" className="footer-link">DBT Portal</a>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <h4 className="text-gold font-bold uppercase tracking-wider mb-2" style={{ fontSize: '0.9rem' }}>Legal</h4>
-            <a href="#" className="footer-link">Privacy Policy</a>
-            <a href="#" className="footer-link">Terms of Use</a>
-            <a href="#" className="footer-link">Disclaimer</a>
-            <a href="#" className="footer-link">Contact Us</a>
           </div>
         </div>
 
@@ -59,22 +38,11 @@ const Footer = () => {
       </div>
 
       <style>{`
-        .footer-link {
-          color: white;
-          opacity: 0.7;
-          text-decoration: none;
-          transition: opacity 0.2s, color 0.2s;
-        }
-        .footer-link:hover {
-          opacity: 1;
-          color: var(--imperial-gold);
-        }
         .mb-12 { margin-bottom: 3rem; }
-        .mb-2 { margin-bottom: 0.5rem; }
         .text-center { text-align: center; }
+        .m-0 { margin: 0; }
         @media (min-width: 768px) {
-          .md-grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-          .md-flex-row { flex-direction: row; }
+          .md-flex-row { flex-direction: row; display: flex; }
           .md-text-left { text-align: left; }
         }
       `}</style>

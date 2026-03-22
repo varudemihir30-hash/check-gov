@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, XCircle, AlertTriangle, Download, Share2, Info } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { useLanguage } from '../context/LanguageContext';
 
 const VerificationResult = () => {
+  const { t } = useLanguage();
   const [resultStatus, setResultStatus] = useState(null);
 
   useEffect(() => {
@@ -15,24 +17,9 @@ const VerificationResult = () => {
         const end = Date.now() + duration;
 
         const frame = () => {
-          confetti({
-            particleCount: 5,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-            colors: ['#FF9933', '#FFFFFF', '#138808']
-          });
-          confetti({
-            particleCount: 5,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-            colors: ['#FF9933', '#FFFFFF', '#138808']
-          });
-
-          if (Date.now() < end) {
-            requestAnimationFrame(frame);
-          }
+          confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#FF9933', '#FFFFFF', '#138808'] });
+          confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#FF9933', '#FFFFFF', '#138808'] });
+          if (Date.now() < end) requestAnimationFrame(frame);
         };
         frame();
       }
@@ -63,13 +50,13 @@ const VerificationResult = () => {
                 <CheckCircle size={64} />
               </div>
               
-              <h3 className="text-oxford hindi-text mb-2" style={{ fontSize: '2.5rem', fontWeight: 700, color: '#138808' }}>सत्यापित योजना</h3>
-              <h4 className="text-oxford mb-6" style={{ fontSize: '1.5rem', opacity: 0.8 }}>Verified Government Scheme</h4>
+              <h3 className="text-oxford hindi-text mb-2" style={{ fontSize: '2.5rem', fontWeight: 700, color: '#138808' }}>{t('सत्यापित योजना')}</h3>
+              <h4 className="text-oxford mb-6" style={{ fontSize: '1.5rem', opacity: 0.8 }}>{t('Verified Government Scheme')}</h4>
               
               <div className="bg-white p-6 rounded text-left mb-6 mx-auto" style={{ border: '1px solid rgba(0,0,0,0.05)', maxWidth: '600px' }}>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <span style={{ fontSize: '0.85rem', color: '#666' }}>Scheme Name</span>
+                    <span style={{ fontSize: '0.85rem', color: '#666' }}>{t('schemeName')}</span>
                     <p className="text-oxford font-bold" style={{ fontSize: '1.1rem' }}>PM-Kisan Samman Nidhi</p>
                   </div>
                   <div>
@@ -110,8 +97,8 @@ const VerificationResult = () => {
                 <XCircle size={64} />
               </div>
               
-              <h3 className="hindi-text mb-2" style={{ fontSize: '2.5rem', fontWeight: 700, color: '#D32F2F' }}>फर्जी योजना अलर्ट</h3>
-              <h4 className="text-oxford mb-6" style={{ fontSize: '1.5rem', opacity: 0.8 }}>Fraudulent Scheme Alert</h4>
+              <h3 className="hindi-text mb-2" style={{ fontSize: '2.5rem', fontWeight: 700, color: '#D32F2F' }}>{t('फर्जी योजना अलर्ट')}</h3>
+              <h4 className="text-oxford mb-6" style={{ fontSize: '1.5rem', opacity: 0.8 }}>{t('Fraudulent Scheme Alert')}</h4>
               
               <div className="bg-white p-6 rounded text-left mb-6 mx-auto" style={{ border: '1px solid rgba(211, 47, 47, 0.2)', maxWidth: '600px' }}>
                 <h5 className="font-bold flex items-center gap-2 mb-4" style={{ color: '#D32F2F', fontSize: '1.1rem' }}>
@@ -126,37 +113,12 @@ const VerificationResult = () => {
 
               <div className="flex flex-col sm-flex-row gap-4 justify-center mt-8 px-4">
                 <button className="btn flex items-center justify-center gap-2 flex-1 text-white w-full" style={{ background: '#D32F2F', border: 'none' }}>
-                  Call 1930
+                  {t('call1930')}
                 </button>
                 <button className="btn text-oxford flex items-center justify-center gap-2 flex-1 w-full" style={{ border: '1px solid #D32F2F', color: '#D32F2F', background: 'transparent' }}>
                   Report Online
                 </button>
               </div>
-            </motion.div>
-          )}
-
-          {resultStatus === 'unverified' && (
-            <motion.div
-              key="unverified"
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              className="premium-card text-center relative overflow-hidden"
-              style={{ borderTop: '4px solid #FF9800', background: '#FFFEFA' }}
-            >
-              <div className="inline-block p-4 rounded-full mb-6 mx-auto" style={{ background: 'rgba(255, 152, 0, 0.1)', color: '#FF9800', width: 'fit-content' }}>
-                <AlertTriangle size={64} />
-              </div>
-              
-              <h3 className="hindi-text mb-2 text-oxford" style={{ fontSize: '2.5rem', fontWeight: 700 }}>अपुष्ट जानकारी</h3>
-              <h4 className="text-oxford mb-6" style={{ fontSize: '1.5rem', opacity: 0.8 }}>Unverified Information</h4>
-              
-              <p className="text-oxford mb-6 mx-auto" style={{ fontSize: '1.1rem', maxWidth: '500px' }}>
-                We could not automatically verify the details provided. This does not necessarily mean the scheme is fraudulent, but manual review is advised.
-              </p>
-
-              <button className="btn btn-gold text-oxford w-full mx-auto" style={{ padding: '1rem', fontSize: '1.1rem', maxWidth: '300px' }}>
-                Request Manual Review
-              </button>
             </motion.div>
           )}
         </AnimatePresence>
@@ -173,14 +135,14 @@ const VerificationResult = () => {
         .p-6 { padding: 1.5rem; }
         .px-4 { padding-left: 1rem; padding-right: 1rem; }
         .pl-6 { padding-left: 1.5rem; }
-        .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .grid-cols-2 { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); }
         .col-span-2 { grid-column: span 1 / span 1; }
         .rounded-full { border-radius: 9999px; }
         .rounded { border-radius: 4px; }
         .break-words { word-break: break-word; }
         .inline-block { display: inline-block; }
         @media (min-width: 640px) {
-          .sm-flex-row { flex-direction: row; }
+          .sm-flex-row { flex-direction: row; display: flex; }
           .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
           .col-span-2 { grid-column: span 2 / span 2; }
           .w-full { width: auto; }
