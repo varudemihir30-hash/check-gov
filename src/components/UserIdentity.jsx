@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, ChevronDown, ChevronUp, Lock } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const UserIdentity = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <section className="bg-ivory py-6" style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
@@ -52,7 +54,7 @@ const UserIdentity = () => {
                 
                 <div className="flex items-center gap-2 text-gold rounded" style={{ padding: '0.75rem 1rem', background: 'rgba(0,33,71,0.05)', fontSize: '0.85rem', marginTop: '1.5rem' }}>
                   <Lock size={16} className="text-oxford" />
-                  <span className="text-oxford" style={{ opacity: 0.8 }}>Your privacy is guaranteed. Data is encrypted and not stored.</span>
+                  <span className="text-oxford" style={{ opacity: 0.8 }}>{t('privacy')}</span>
                 </div>
               </motion.div>
             )}

@@ -65,7 +65,15 @@ const VerificationResult = () => {
                   </div>
                   <div className="col-span-2">
                     <span style={{ fontSize: '0.85rem', color: '#666' }}>Official Website</span>
-                    <a href="#" className="text-gold font-bold break-words" style={{ display: 'block', fontSize: '1.1rem' }}>https://pmkisan.gov.in</a>
+                    <a
+                      href="https://pmkisan.gov.in"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gold font-bold break-words"
+                      style={{ display: 'block', fontSize: '1.1rem', textDecoration: 'none' }}
+                    >
+                      https://pmkisan.gov.in
+                    </a>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Info } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const schemes = [
   { id: 1, title: 'PM Kisan Samman Nidhi', state: 'Central', category: 'Agriculture' },
@@ -25,9 +26,16 @@ const schemes = [
   { id: 20, title: 'Skill India', state: 'Central', category: 'Skill' }
 ];
 
-const Directory = () => {
+const Directory = ({ initialQuery = '' }) => {
   const containerRef = useRef(null);
   const [width, setWidth] = useState(0);
+  const [query, setQuery] = useState(initialQuery);
+
+  const filteredSchemes = schemes.filter((scheme) => {
+    if (!query.trim()) return true;
+    const q = query.trim().toLowerCase();
+    return scheme.title.toLowerCase().includes(q) || scheme.category.toLowerCase().includes(q);
+  });
 
   useEffect(() => {
     if (containerRef.current) {
@@ -41,7 +49,7 @@ const Directory = () => {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [filteredSchemes.length]);
 
   return (
     <section id="directory" className="bg-oxford section-padding overflow-hidden">
@@ -58,6 +66,35 @@ const Directory = () => {
         </div>
       </div>
 
+      <div className="container mb-6" style={{ position: 'relative' }}>
+        <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+          <div style={{ flex: '1 1 320px', minWidth: 0 }}>
+            <label style={{ display: 'block', color: 'rgba(255,255,255,0.85)', fontWeight: 700, marginBottom: '0.4rem' }}>
+              Search schemes
+            </label>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Type a scheme name or category..."
+              className="w-full"
+              style={{
+                background: 'rgba(248,246,240,0.08)',
+                borderColor: 'rgba(255,255,255,0.18)',
+                color: 'var(--white)',
+                padding: '0.75rem 1rem',
+                border: '1px solid rgba(255,255,255,0.18)',
+                borderRadius: 8,
+                outline: 'none',
+                fontFamily: 'var(--font-body)',
+              }}
+            />
+          </div>
+          <div style={{ flex: '0 0 auto', color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>
+            {filteredSchemes.length} result{filteredSchemes.length === 1 ? '' : 's'}
+          </div>
+        </div>
+      </div>
+
       <div ref={containerRef} className="ml-safe pl-safe" style={{ cursor: 'grab' }}>
         <motion.div 
           drag="x" 
@@ -66,7 +103,19 @@ const Directory = () => {
           style={{ width: 'max-content', paddingLeft: 'max(1.5rem, calc((100vw - 1200px) / 2))', paddingRight: '2rem' }}
           whileTap={{ cursor: 'grabbing' }}
         >
-          {schemes.map((scheme) => (
+          {filteredSchemes.length === 0 ? (
+            <div
+              style={{
+                padding: '1.75rem',
+                textAlign: 'center',
+                color: 'rgba(255,255,255,0.85)',
+                fontWeight: 600,
+              }}
+            >
+              No schemes found. Try a different name or category.
+            </div>
+          ) : (
+            filteredSchemes.map((scheme) => (
             <motion.div 
               key={scheme.id}
               className="bg-white rounded p-6 flex flex-col justify-between"
@@ -86,10 +135,17 @@ const Directory = () => {
               </div>
               <div className="flex justify-between items-center text-sm" style={{ color: '#666', borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '0.75rem' }}>
                 <span>{scheme.state}</span>
-                <span className="text-gold font-bold cursor-pointer hover-underline">Verify</span>
+                <Link
+                  to="/#verify"
+                  className="text-gold font-bold hover-underline"
+                  style={{ textDecoration: 'none' }}
+                >
+                  Verify
+                </Link>
               </div>
             </motion.div>
-          ))}
+            ))
+          )}
         </motion.div>
       </div>
       

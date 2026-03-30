@@ -47,17 +47,42 @@ const UploadVerify = () => {
   return (
     <section id="verify" className="relative z-20" style={{ marginTop: '-4rem', paddingBottom: '4rem' }}>
       <div className="container">
-        <div className="premium-card mx-auto" style={{ maxWidth: '750px', borderTop: '4px solid var(--imperial-gold)', padding: '2.5rem', borderRadius: '12px', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', background: 'var(--white)' }}>
+        <div
+          className="premium-card mx-auto"
+          style={{
+            maxWidth: '750px',
+            borderTop: '4px solid var(--imperial-gold)',
+            padding: '2.25rem',
+            borderRadius: '14px',
+            boxShadow: '0 18px 42px -18px rgba(0, 0, 0, 0.35)',
+            background: 'var(--white)',
+          }}
+        >
           
           <div className="text-center mb-6">
             <h2 className="text-oxford hindi-text" style={{ fontSize: '2rem', marginBottom: '0.2rem', fontWeight: 700 }}>{t('hubTitle')}</h2>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2 p-1 mx-auto mb-8 tab-wrapper" style={{ background: '#F0EFEB', width: 'fit-content', borderRadius: '999px' }}>
+          <div
+            className="flex flex-nowrap gap-2 p-1 mx-auto mb-8 tab-wrapper"
+            style={{
+              background: '#F0EFEB',
+              width: '100%',
+              borderRadius: '999px',
+              overflowX: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none',
+            }}
+            role="tablist"
+            aria-label="Verification methods"
+          >
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === tab.id}
                 className="flex items-center justify-center gap-2 transition-all tab-btn"
                 style={{ 
                   background: activeTab === tab.id ? 'var(--white)' : 'transparent',
@@ -66,6 +91,7 @@ const UploadVerify = () => {
                   boxShadow: activeTab === tab.id ? '0 2px 10px rgba(0,0,0,0.08)' : 'none',
                   border: 'none', cursor: 'pointer', fontFamily: 'var(--font-heading)', 
                   fontSize: '0.95rem', padding: '0.6rem 1.25rem', borderRadius: '999px',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 {tab.icon}
@@ -81,12 +107,18 @@ const UploadVerify = () => {
                 <label className="text-oxford font-bold" style={{ fontSize: '0.95rem' }}>{t('schemeName')}</label>
                 <div className="relative w-full">
                   <Search size={18} className="absolute text-gold" style={{ left: '16px', top: '50%', transform: 'translateY(-50%)' }} />
-                  <input type="text" placeholder="e.g. PM-Kisan Samman Nidhi" className="custom-input w-full" style={{ paddingLeft: '2.75rem' }} />
+                  <input
+                    type="text"
+                    placeholder="e.g. PM-Kisan Samman Nidhi"
+                    aria-label="Scheme name"
+                    className="custom-input w-full"
+                    style={{ paddingLeft: '2.75rem' }}
+                  />
                 </div>
               </div>
               <div className="flex flex-col gap-2 flex-1 w-full" style={{ flex: 1 }}>
                 <label className="text-oxford font-bold" style={{ fontSize: '0.95rem' }}>{t('stateRegion')}</label>
-                <select className="custom-input w-full">
+                <select className="custom-input w-full" aria-label="State or region">
                   <option value="all">{t('regionAll')}</option>
                   {indianStates.map((state) => (
                     <option key={state} value={state.toLowerCase()}>
@@ -103,7 +135,13 @@ const UploadVerify = () => {
                   <label className="text-oxford font-bold" style={{ fontSize: '0.95rem' }}>{t('urlLabel')}</label>
                   <div className="relative w-full">
                     <LinkIcon size={18} className="absolute" style={{ left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#999' }} />
-                    <input type="url" placeholder={t('urlPlaceholder')} className="custom-input bg-ivory w-full" style={{ paddingLeft: '2.75rem' }} />
+                    <input
+                      type="url"
+                      placeholder={t('urlPlaceholder')}
+                      aria-label="Scheme website URL"
+                      className="custom-input bg-ivory w-full"
+                      style={{ paddingLeft: '2.75rem' }}
+                    />
                   </div>
                 </motion.div>
               )}
@@ -111,7 +149,12 @@ const UploadVerify = () => {
               {activeTab === 'sms' && (
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex flex-col gap-2 mb-6 w-full">
                   <label className="text-oxford font-bold" style={{ fontSize: '0.95rem' }}>{t('smsLabel')}</label>
-                  <textarea placeholder={t('smsPlaceholder')} className="custom-input bg-ivory w-full" style={{ minHeight: '100px', resize: 'vertical' }} />
+                  <textarea
+                    placeholder={t('smsPlaceholder')}
+                    aria-label="SMS content"
+                    className="custom-input bg-ivory w-full"
+                    style={{ minHeight: '120px', resize: 'vertical' }}
+                  />
                 </motion.div>
               )}
 
@@ -160,6 +203,8 @@ const UploadVerify = () => {
                 className="w-full flex justify-between items-center cursor-pointer outline-none"
                 style={{ padding: '1rem 1.25rem', border: 'none', background: showOptional ? 'rgba(248,246,240,0.5)' : 'transparent', transition: 'background 0.2s' }}
                 onClick={() => setShowOptional(!showOptional)}
+                type="button"
+                aria-expanded={showOptional}
               >
                 <div className="flex items-center gap-4">
                   <div className="text-oxford flex items-center justify-center p-2.5 rounded-lg" style={{ background: 'rgba(0,33,71,0.05)' }}>
@@ -203,6 +248,7 @@ const UploadVerify = () => {
             </div>
 
             <button 
+              type="button"
               className="w-full flex justify-center items-center gap-3 transition-transform" 
               style={{ 
                 background: 'linear-gradient(135deg, #002147 0%, #001229 100%)',
@@ -211,9 +257,11 @@ const UploadVerify = () => {
                 boxShadow: '0 8px 20px -5px rgba(0, 33, 71, 0.4)',
                 fontFamily: 'var(--font-heading)',
                 fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase',
-                transform: isVerifying ? 'scale(0.98)' : 'scale(1)'
+                transform: isVerifying ? 'scale(0.99)' : 'scale(1)',
+                opacity: isVerifying ? 0.9 : 1,
               }}
               onClick={handleVerify}
+              disabled={isVerifying}
             >
               <ShieldCheck size={24} />
               {isVerifying ? t('btnVerifying') : t('btnVerify')}
@@ -245,7 +293,7 @@ const UploadVerify = () => {
         .custom-input {
           width: 100%;
           padding: 0.75rem 1rem 0.75rem 1rem;
-          border: 1px solid rgba(0,0,0,0.1);
+          border: 1px solid rgba(0,33,71,0.14);
           border-radius: 8px;
           font-family: var(--font-body);
           font-size: 0.95rem;
@@ -260,6 +308,9 @@ const UploadVerify = () => {
           box-shadow: 0 0 0 3px rgba(201, 152, 42, 0.1);
         }
         .custom-input.bg-ivory { background: var(--warm-ivory); }
+
+        .tab-wrapper::-webkit-scrollbar { display: none; }
+        .tab-btn:focus-visible { outline: 3px solid rgba(201, 152, 42, 0.55); outline-offset: 2px; }
 
         @media (max-width: 640px) {
           .tab-wrapper { flex-direction: column; border-radius: 12px !important; padding: 0.5rem !important; width: 100% !important; }

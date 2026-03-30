@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ShieldCheck, Menu, X, Globe } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { languages } from '../translations';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const { language, changeLanguage, t } = useLanguage();
@@ -27,8 +28,28 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md-flex items-center gap-8">
-          <a href="#" className="text-white hover-text-gold" style={{ textDecoration: 'none' }}>{t('home')}</a>
-          <a href="#verify" className="text-white hover-text-gold" style={{ textDecoration: 'none' }}>{t('verifyScheme')}</a>
+          <Link to="/" className="text-white hover-text-gold" style={{ textDecoration: 'none' }}>
+            {t('home')}
+          </Link>
+          <Link to="/#verify" className="text-white hover-text-gold" style={{ textDecoration: 'none' }}>
+            {t('verifyScheme')}
+          </Link>
+
+          <Link to="/about" className="text-white hover-text-gold" style={{ textDecoration: 'none' }}>
+            About Us
+          </Link>
+          <Link to="/contact" className="text-white hover-text-gold" style={{ textDecoration: 'none' }}>
+            Contact Us
+          </Link>
+          <Link to="/privacy-policy" className="text-white hover-text-gold" style={{ textDecoration: 'none' }}>
+            Privacy Policy
+          </Link>
+          <Link to="/disclaimer" className="text-white hover-text-gold" style={{ textDecoration: 'none' }}>
+            Disclaimer
+          </Link>
+          <Link to="/terms-and-conditions" className="text-white hover-text-gold" style={{ textDecoration: 'none' }}>
+            Terms
+          </Link>
           
           <div className="flex items-center gap-2 text-white relative" style={{ borderLeft: '1px solid rgba(255,255,255,0.2)', paddingLeft: '1.5rem' }}>
             <Globe size={18} className="text-gold" />
@@ -43,7 +64,9 @@ const Navbar = () => {
             </select>
           </div>
 
-          <a href="#verify" className="btn btn-gold text-oxford">{t('verifyNow')}</a>
+          <Link to="/#verify" className="btn btn-gold text-oxford" style={{ textDecoration: 'none' }}>
+            {t('verifyNow')}
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -58,8 +81,28 @@ const Navbar = () => {
 
       {mobileMenuOpen && (
         <div className="absolute w-full bg-oxford flex flex-col items-center gap-4 p-6 shadow-2xl z-50 transition-all border-b" style={{ top: '100%', left: 0, borderBottom: '4px solid var(--imperial-gold)' }}>
-          <a href="#" className="text-white font-bold" onClick={() => setMobileMenuOpen(false)}>{t('home')}</a>
-          <a href="#verify" className="text-white font-bold" onClick={() => setMobileMenuOpen(false)}>{t('verifyScheme')}</a>
+          <Link to="/" className="text-white font-bold" style={{ textDecoration: 'none' }} onClick={() => setMobileMenuOpen(false)}>
+            {t('home')}
+          </Link>
+          <Link to="/#verify" className="text-white font-bold" style={{ textDecoration: 'none' }} onClick={() => setMobileMenuOpen(false)}>
+            {t('verifyScheme')}
+          </Link>
+
+          <Link to="/about" className="text-white font-bold" style={{ textDecoration: 'none' }} onClick={() => setMobileMenuOpen(false)}>
+            About Us
+          </Link>
+          <Link to="/contact" className="text-white font-bold" style={{ textDecoration: 'none' }} onClick={() => setMobileMenuOpen(false)}>
+            Contact Us
+          </Link>
+          <Link to="/privacy-policy" className="text-white font-bold" style={{ textDecoration: 'none' }} onClick={() => setMobileMenuOpen(false)}>
+            Privacy Policy
+          </Link>
+          <Link to="/disclaimer" className="text-white font-bold" style={{ textDecoration: 'none' }} onClick={() => setMobileMenuOpen(false)}>
+            Disclaimer
+          </Link>
+          <Link to="/terms-and-conditions" className="text-white font-bold" style={{ textDecoration: 'none' }} onClick={() => setMobileMenuOpen(false)}>
+            Terms
+          </Link>
           <select 
             value={language || 'en'} 
             onChange={(e) => { changeLanguage(e.target.value); setMobileMenuOpen(false); }}
