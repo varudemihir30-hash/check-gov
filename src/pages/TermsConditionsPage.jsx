@@ -6,7 +6,7 @@ import SchemaMarkup from '../components/SchemaMarkup';
 const PUBLISHED_DATE = '2026-03-30';
 
 export default function TermsConditionsPage() {
-  const canonicalUrl = 'https://sachyojna.com/terms-and-conditions';
+  const canonicalUrl = 'https://www.sachyojana.com/terms-and-conditions';
 
   const schema = {
     '@context': 'https://schema.org',

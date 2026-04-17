@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SITE_URL = 'https://sachyojna.com';
+const SITE_URL = 'https://www.sachyojana.com';
 
 export default function SchemaMarkup({ schema }) {
   const safeSchema = schema

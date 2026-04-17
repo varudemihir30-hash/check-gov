@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sachyojna.com/sitemap.xml
-
+Sitemap: https://www.sachyojana.com/sitemap.xml

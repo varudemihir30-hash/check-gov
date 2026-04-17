@@ -6,7 +6,7 @@ import SchemaMarkup from '../components/SchemaMarkup';
 const PUBLISHED_DATE = '2026-03-30';
 
 export default function DisclaimerPage() {
-  const canonicalUrl = 'https://sachyojna.com/disclaimer';
+  const canonicalUrl = 'https://www.sachyojana.com/disclaimer';
 
   const schema = {
     '@context': 'https://schema.org',

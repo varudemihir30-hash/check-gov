@@ -6,7 +6,7 @@ import SchemaMarkup from '../components/SchemaMarkup';
 const PUBLISHED_DATE = '2026-03-30';
 
 export default function PrivacyPolicyPage() {
-  const canonicalUrl = 'https://sachyojna.com/privacy-policy';
+  const canonicalUrl = 'https://www.sachyojana.com/privacy-policy';
 
   const schema = {
     '@context': 'https://schema.org',
@@ -31,7 +31,8 @@ export default function PrivacyPolicyPage() {
 
       <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]} />
 
-      <h1 style={{ fontSize: '2.3rem', marginBottom: '1rem' }}>Privacy Policy</h1>
+      <h1 style={{ fontSize: '2.3rem', marginBottom: '0.5rem' }}>Privacy Policy</h1>
+      <p style={{ marginBottom: '1.2rem', fontSize: '0.9rem', opacity: 0.65 }}>Last Updated: April 17, 2026</p>
 
       <p style={{ marginBottom: '1.2rem', fontSize: '1.02rem' }}>
         This Privacy Policy explains how SachYojana (“we”, “our”, “us”) handles information when you visit our website and use
@@ -109,8 +110,8 @@ export default function PrivacyPolicyPage() {
 
       <h2>7. Changes to this policy</h2>
       <p style={{ marginBottom: 0 }}>
-        We may update this Privacy Policy from time to time. When we make changes, we will update the “last updated” date
-        (not shown in this page) and the content accordingly. Please check this page periodically.
+        We may update this Privacy Policy from time to time. When we make changes, we will update the “Last Updated” date
+        shown at the top of this page and revise the content accordingly. Please check this page periodically to stay informed.
       </p>
 
       <h2 style={{ marginTop: '1.8rem' }}>8. Managing cookies and ad settings</h2>

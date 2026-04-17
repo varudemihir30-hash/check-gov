@@ -34,14 +34,13 @@ const Footer = () => {
           <div style={{ maxWidth: '520px' }}>
             <div style={{ fontWeight: 800, marginBottom: '0.9rem' }}>Quick Links</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+              <Link to="/" style={{ color: 'var(--white)', textDecoration: 'none' }}>Home</Link>
+              <Link to="/schemes" style={{ color: 'var(--white)', textDecoration: 'none' }}>Schemes Directory</Link>
               <Link to="/about" style={{ color: 'var(--white)', textDecoration: 'none' }}>About Us</Link>
               <Link to="/contact" style={{ color: 'var(--white)', textDecoration: 'none' }}>Contact Us</Link>
               <Link to="/privacy-policy" style={{ color: 'var(--white)', textDecoration: 'none' }}>Privacy Policy</Link>
               <Link to="/disclaimer" style={{ color: 'var(--white)', textDecoration: 'none' }}>Disclaimer</Link>
-              <Link
-                to="/terms-and-conditions"
-                style={{ color: 'var(--white)', textDecoration: 'none' }}
-              >
+              <Link to="/terms-and-conditions" style={{ color: 'var(--white)', textDecoration: 'none' }}>
                 Terms & Conditions
               </Link>
             </div>

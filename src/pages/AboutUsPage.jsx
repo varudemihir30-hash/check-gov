@@ -6,7 +6,7 @@ import SchemaMarkup from '../components/SchemaMarkup';
 const PUBLISHED_DATE = '2026-03-30';
 
 export default function AboutUsPage() {
-  const url = 'https://sachyojna.com/about';
+  const url = 'https://www.sachyojana.com/about';
 
   const schema = {
     '@context': 'https://schema.org',

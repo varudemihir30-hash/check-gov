@@ -24,7 +24,7 @@ export default function ContactUsPage() {
     () => ({
       '@context': 'https://schema.org',
       '@type': 'ContactPage',
-      url: 'https://sachyojna.com/contact',
+      url: 'https://www.sachyojana.com/contact',
       contactType: 'general',
       dateModified: PUBLISHED_DATE,
     }),
@@ -207,6 +207,14 @@ export default function ContactUsPage() {
           Avoid submitting sensitive personal information. Describe what happened, how the scam contacted you (SMS, phone call,
           WhatsApp, website), and what claims were made. This helps us publish awareness guidance that can benefit other citizens.
         </p>
+      </div>
+
+      <div style={{ maxWidth: 860, margin: '2rem auto 0', padding: '1.2rem 1.5rem', background: '#f8f6f0', borderLeft: '4px solid #C9982A', borderRadius: 4 }}>
+        <strong>Email us directly:</strong>{' '}
+        <a href="mailto:contact@sachyojana.com" style={{ color: '#002147', fontWeight: 700 }}>
+          contact@sachyojana.com
+        </a>
+        <span style={{ opacity: 0.7, marginLeft: '0.5rem', fontSize: '0.9rem' }}>— We aim to respond within 2–3 business days.</span>
       </div>
 
       <div style={{ maxWidth: 860, margin: '2.2rem auto 0', opacity: 0.95 }}>

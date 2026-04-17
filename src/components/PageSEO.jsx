@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SITE_URL = 'https://sachyojna.com';
+const SITE_URL = 'https://www.sachyojana.com';
 
 /**
  * Centralized SEO tags (title, description, canonical, robots, Open Graph).

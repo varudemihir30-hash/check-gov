@@ -14,6 +14,11 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import DisclaimerPage from './pages/DisclaimerPage';
 import TermsConditionsPage from './pages/TermsConditionsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import SchemesPage from './pages/SchemesPage';
+import PmKisanPage from './pages/PmKisanPage';
+import AyushmanBharatPage from './pages/AyushmanBharatPage';
+import PmAwasYojanaPage from './pages/PmAwasYojanaPage';
+import PmUjjwalaPage from './pages/PmUjjwalaPage';
 
 function App() {
   return (
@@ -35,6 +40,11 @@ function App() {
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                 <Route path="/disclaimer" element={<DisclaimerPage />} />
                 <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
+                <Route path="/schemes" element={<SchemesPage />} />
+                <Route path="/schemes/pm-kisan-samman-nidhi" element={<PmKisanPage />} />
+                <Route path="/schemes/ayushman-bharat" element={<AyushmanBharatPage />} />
+                <Route path="/schemes/pm-awas-yojana" element={<PmAwasYojanaPage />} />
+                <Route path="/schemes/pm-ujjwala-yojana" element={<PmUjjwalaPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </main>
